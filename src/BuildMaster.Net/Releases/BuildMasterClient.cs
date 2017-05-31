@@ -68,7 +68,7 @@ namespace BuildMaster.Net
                 //TODO: Variables
             );
 
-            var response = await GetReleasesApiClient("create", queryParamValues)
+            var response = await GetReleasesApiClient("create-from-template", queryParamValues)
                 .PutAsync(new StringContent(""))
                 .ReceiveJson<Release>();
 

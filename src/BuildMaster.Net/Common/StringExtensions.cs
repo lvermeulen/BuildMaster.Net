@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BuildMaster.Net
+namespace BuildMaster.Net.Common
 {
     public static class StringExtensions
     {
