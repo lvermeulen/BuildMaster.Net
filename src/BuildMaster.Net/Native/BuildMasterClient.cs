@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Flurl;
 using Flurl.Http;
 
 // ReSharper disable CheckNamespace
@@ -18,10 +17,8 @@ namespace BuildMaster.Net
             _apiKey = apiKey;
         }
 
-        private IFlurlClient GetNativeApiClient(string path, object queryParamValues = null) => new Url(_url)
-            .AppendPathSegment("/api/json")
+        private IFlurlClient GetNativeApiClient(string path, object queryParamValues = null) => GetApiClient("/api/json")
             .AppendPathSegment(path)
-            .SetQueryParam("key", _apiKey)
             .SetQueryParams(queryParamValues)
             .AllowAnyHttpStatus();
 
