@@ -24,6 +24,16 @@ namespace BuildMaster.Net
             return s;
         }
 
+        public static string Decapitalize(this string s)
+        {
+            if (!string.IsNullOrWhiteSpace(s))
+            {
+                s = char.ToLower(s[0]) + s.Substring(1);
+            }
+
+            return s;
+        }
+
         public static string ToYnIndicator(this bool value) => value ? "Y" : "N";
     }
 }
