@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BuildMaster.Net.Models
+namespace BuildMaster.Net.Native.Models
 {
     public class YnIndicator
     {

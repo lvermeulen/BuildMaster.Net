@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using BuildMaster.Net.Common;
-using BuildMaster.Net.Models;
+using BuildMaster.Net.Native.Models;
 
 // ReSharper disable InconsistentNaming
 // ReSharper disable CheckNamespace
