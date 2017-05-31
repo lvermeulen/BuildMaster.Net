@@ -3,6 +3,8 @@ using System.Threading.Tasks;
 using Flurl;
 using Flurl.Http;
 
+// ReSharper disable CheckNamespace
+
 namespace BuildMaster.Net
 {
     public partial class BuildMasterClient
@@ -16,7 +18,7 @@ namespace BuildMaster.Net
             _apiKey = apiKey;
         }
 
-        private IFlurlClient GetClient(string path, object queryParamValues = null) => new Url(_url)
+        private IFlurlClient GetNativeApiClient(string path, object queryParamValues = null) => new Url(_url)
             .AppendPathSegment("/api/json")
             .AppendPathSegment(path)
             .SetQueryParam("key", _apiKey)
@@ -25,7 +27,7 @@ namespace BuildMaster.Net
 
         private async Task<TResult> ExecuteNativeApiMethodAsync<TResult>(string nativeApiMethodName, IDictionary<string, object> parameters = null)
         {
-            var response = await GetClient(nativeApiMethodName, parameters)
+            var response = await GetNativeApiClient(nativeApiMethodName, parameters)
                 .GetJsonAsync<TResult>()
                 .ConfigureAwait(false);
 
@@ -34,7 +36,7 @@ namespace BuildMaster.Net
 
         private async Task<bool> ExecuteNativeApiMethodAsync(string nativeApiMethodName, IDictionary<string, object> parameters = null)
         {
-            var response = await GetClient(nativeApiMethodName, parameters)
+            var response = await GetNativeApiClient(nativeApiMethodName, parameters)
                 .GetAsync()
                 .ConfigureAwait(false);
 
