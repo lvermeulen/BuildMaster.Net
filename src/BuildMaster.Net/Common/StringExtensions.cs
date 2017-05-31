@@ -35,5 +35,9 @@ namespace BuildMaster.Net.Common
         }
 
         public static string ToYnIndicator(this bool value) => value ? "Y" : "N";
+
+        public static string ToTrueFalse(this bool? value) => value.HasValue ? ToTrueFalse(value.Value) : null;
+
+        public static string ToTrueFalse(this bool value) => value ? "true" : "false";
     }
 }
