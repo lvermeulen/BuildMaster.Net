@@ -89,7 +89,7 @@ namespace BuildMaster.Net
                 new NamedValue(nameof(request.PipelineId).Decapitalize(), request.PipelineId),
                 new NamedValue(nameof(request.PipelineName).Decapitalize(), request.PipelineName),
                 new NamedValue(nameof(request.FurthestStage).Decapitalize(), request.FurthestStage),
-                new NamedValue(nameof(request.Status).Decapitalize(), request.Status.ToString().Decapitalize()) //TODO: verify Status.ToString()
+                new NamedValue(nameof(request.Status).Decapitalize(), request.Status.ToString())
             );
 
             //TODO: verify empty path or null
@@ -114,6 +114,29 @@ namespace BuildMaster.Net
             var response = await GetReleasesApiClient("packages/create", queryParamValues)
                 .PutAsync(new StringContent(""))
                 .ReceiveJson<Package>();
+
+            //TODO: inline
+            return response;
+        }
+
+        public async Task<IEnumerable<Deployment>> GetDeploymentsAsync(GetDeploymentsRequest request)
+        {
+            var queryParamValues = QueryParamValues.From(
+                new NamedValue(nameof(request.ApplicationId).Decapitalize(), request.ApplicationId),
+                new NamedValue(nameof(request.ApplicationName).Decapitalize(), request.ApplicationName),
+                new NamedValue(nameof(request.ReleaseId).Decapitalize(), request.ReleaseId),
+                new NamedValue(nameof(request.ReleaseName).Decapitalize(), request.ReleaseName),
+                new NamedValue(nameof(request.ReleaseNumber).Decapitalize(), request.ReleaseNumber),
+                new NamedValue(nameof(request.DeploymentId).Decapitalize(), request.DeploymentId),
+                new NamedValue(nameof(request.PipelineStageName).Decapitalize(), request.PipelineStageName),
+                new NamedValue(nameof(request.EnvironmentId).Decapitalize(), request.EnvironmentId),
+                new NamedValue(nameof(request.EnvironmentName).Decapitalize(), request.EnvironmentName),
+                new NamedValue(nameof(request.Status).Decapitalize(), request.Status.ToString())
+            );
+
+            //TODO: verify empty path or null
+            var response = await GetReleasesApiClient("packages/deployments", queryParamValues)
+                .GetJsonAsync<IEnumerable<Deployment>>();
 
             //TODO: inline
             return response;
