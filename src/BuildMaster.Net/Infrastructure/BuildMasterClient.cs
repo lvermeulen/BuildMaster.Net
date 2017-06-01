@@ -50,5 +50,41 @@ namespace BuildMaster.Net
 
             return response; //TODO: inline
         }
+
+        public async Task<IEnumerable<ServerRole>> ListServerRolesAsync()
+        {
+            var response = await GetInfrastructureApiClient("roles/list")
+                .PostAsync(new StringContent(""))
+                .ReceiveJson<IEnumerable<ServerRole>>();
+
+            return response; //TODO: inline
+        }
+
+        public async Task<ServerRole> CreateServerRoleAsync(ServerRole serverRole)
+        {
+            var response = await GetInfrastructureApiClient($"roles/create/{serverRole?.Name}")
+                .PostJsonAsync(serverRole)
+                .ReceiveJson<ServerRole>();
+
+            return response; //TODO: inline
+        }
+
+        public async Task<ServerRole> UpdateServerRoleAsync(ServerRole serverRole)
+        {
+            var response = await GetInfrastructureApiClient($"roles/update/{serverRole?.Name}")
+                .PostJsonAsync(serverRole)
+                .ReceiveJson<ServerRole>();
+
+            return response; //TODO: inline
+        }
+
+        public async Task<ServerRole> DeleteServerRoleAsync(ServerRole serverRole)
+        {
+            var response = await GetInfrastructureApiClient($"roles/delete/{serverRole?.Name}")
+                .PostJsonAsync(serverRole)
+                .ReceiveJson<ServerRole>();
+
+            return response; //TODO: inline
+        }
     }
 }
