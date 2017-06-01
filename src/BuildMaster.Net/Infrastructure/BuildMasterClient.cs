@@ -42,13 +42,12 @@ namespace BuildMaster.Net
             return response; //TODO: inline
         }
 
-        public async Task<Server> DeleteServerAsync(Server server)
+        public async Task<bool> DeleteServerAsync(Server server)
         {
             var response = await GetInfrastructureApiClient($"servers/delete/{server?.Name}")
-                .PostJsonAsync(server)
-                .ReceiveJson<Server>();
+                .PostJsonAsync(server);
 
-            return response; //TODO: inline
+            return response.IsSuccessStatusCode;
         }
 
         public async Task<IEnumerable<ServerRole>> ListServerRolesAsync()
@@ -78,13 +77,47 @@ namespace BuildMaster.Net
             return response; //TODO: inline
         }
 
-        public async Task<ServerRole> DeleteServerRoleAsync(ServerRole serverRole)
+        public async Task<bool> DeleteServerRoleAsync(ServerRole serverRole)
         {
             var response = await GetInfrastructureApiClient($"roles/delete/{serverRole?.Name}")
-                .PostJsonAsync(serverRole)
-                .ReceiveJson<ServerRole>();
+                .PostJsonAsync(serverRole);
+
+            return response.IsSuccessStatusCode;
+        }
+
+        public async Task<IEnumerable<Environment>> ListEnvironmentsAsync()
+        {
+            var response = await GetInfrastructureApiClient("environments/list")
+                .PostAsync(new StringContent(""))
+                .ReceiveJson<IEnumerable<Environment>>();
 
             return response; //TODO: inline
+        }
+
+        public async Task<Environment> CreateEnvironmentsAsync(Environment environment)
+        {
+            var response = await GetInfrastructureApiClient($"environments/create/{environment?.Name}")
+                .PostJsonAsync(environment)
+                .ReceiveJson<Environment>();
+
+            return response; //TODO: inline
+        }
+
+        public async Task<Environment> UpdateEnvironmentsAsync(Environment environment)
+        {
+            var response = await GetInfrastructureApiClient($"environments/update/{environment?.Name}")
+                .PostJsonAsync(environment)
+                .ReceiveJson<Environment>();
+
+            return response; //TODO: inline
+        }
+
+        public async Task<bool> DeleteEnvironmentsAsync(Environment environment)
+        {
+            var response = await GetInfrastructureApiClient($"environments/delete/{environment?.Name}")
+                .PostJsonAsync(environment);
+
+            return response.IsSuccessStatusCode;
         }
     }
 }
