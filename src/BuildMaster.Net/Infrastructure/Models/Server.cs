@@ -1,4 +1,7 @@
-﻿namespace BuildMaster.Net.Infrastructure.Models
+﻿using System.Collections.Generic;
+using BuildMaster.Net.Common.Models;
+
+namespace BuildMaster.Net.Infrastructure.Models
 {
     public class Server
     {
@@ -16,9 +19,6 @@
         public string TempPath { get; set; } // A string containing the name of the temporary path to use for files; this property is only present when the type is ssh or powershell
         public string WsManUrl { get; set; } // A string containing the WSMan endpoint; this property is only present when the type is powershell
         public bool Active { get; set; } // A boolean indicating whether the server is active or disabled
-        //TODO: Server Variables
-        public string Variables { get; set; } // An object with property/values representing variable names and values
-                                // a variable name is a string of no more than fifty characters: numbers (0-9), upper- and lower-case letters (a-Z), dashes (-), spaces ( ), and underscores (_) and must start with a letter, and may not start or end with a dash, underscore, or space; a variable
-                                // a variable value is a string of any number of characters
+        public List<Variable> Variables { get; set; } // An object with property/values representing variable names and values
     }
 }
