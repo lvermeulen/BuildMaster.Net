@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using BuildMaster.Net.Common;
 using BuildMaster.Net.Common.Models;
+using Newtonsoft.Json;
 
 namespace BuildMaster.Net.Infrastructure.Models
 {
@@ -19,6 +21,7 @@ namespace BuildMaster.Net.Infrastructure.Models
         public string TempPath { get; set; } // A string containing the name of the temporary path to use for files; this property is only present when the type is ssh or powershell
         public string WsManUrl { get; set; } // A string containing the WSMan endpoint; this property is only present when the type is powershell
         public bool Active { get; set; } // A boolean indicating whether the server is active or disabled
+        [JsonConverter(typeof(VariableJsonConverter))]
         public List<Variable> Variables { get; set; } // An object with property/values representing variable names and values
     }
 }
