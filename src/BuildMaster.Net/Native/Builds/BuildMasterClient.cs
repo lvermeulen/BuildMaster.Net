@@ -102,6 +102,16 @@ namespace BuildMaster.Net
             return await ExecuteNativeApiMethodAsync<BuildExecutionsExtended>(nameof(Builds_GetExecutionExtendedAsync).WithoutAsyncSuffix(), queryParamValues).ConfigureAwait(false);
         }
 
+        public async Task<string> Builds_GetExecitionLogAsync(int execution_Id)
+        {
+            //TODO: verify existence of Builds_GetExecitionLog
+            var queryParamValues = QueryParamValues.From(
+                new NamedValue(nameof(execution_Id).Capitalize(), execution_Id)
+            );
+
+            return await ExecuteNativeApiMethodAsync<string>(nameof(Builds_GetExecitionLogAsync).WithoutAsyncSuffix(), queryParamValues).ConfigureAwait(false);
+        }
+
         /// <summary>
         /// Gets all the build executions for the specified build
         /// </summary>
