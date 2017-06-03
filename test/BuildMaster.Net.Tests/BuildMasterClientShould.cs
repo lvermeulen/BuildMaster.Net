@@ -6,7 +6,7 @@
 
         public BuildMasterClientShould()
         {
-            _client = new BuildMasterClient("", "");
+            _client = new BuildMasterClient("http://localhost:81", "12345");
         }
     }
 }

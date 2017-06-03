@@ -201,7 +201,7 @@ namespace BuildMaster.Net
                 new NamedValue(nameof(userIsNamed_Indicator).Capitalize(), userIsNamed_Indicator.ToYnIndicator())
             );
 
-            return (await ExecuteNativeApiMethodAsync<YnIndicator>(nameof(Security_UserIsNamedAsync).WithoutAsyncSuffix(), queryParamValues).ConfigureAwait(false))
+            return (await ExecuteNativeApiMethodAsync<string>(nameof(Security_UserIsNamedAsync).WithoutAsyncSuffix(), queryParamValues).ConfigureAwait(false))
                 .ToBool();
         }
     }
