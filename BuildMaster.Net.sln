@@ -7,6 +7,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		.gitattributes = .gitattributes
 		.gitignore = .gitignore
+		appveyor.yml = appveyor.yml
+		codecov.yml = codecov.yml
 		global.json = global.json
 		LICENSE = LICENSE
 	EndProjectSection
@@ -16,6 +18,13 @@ EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "BuildMaster.Net.Tests", "test\BuildMaster.Net.Tests\BuildMaster.Net.Tests.xproj", "{DD9BE8D7-5217-4F04-A19A-A809BEBE0FED}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{ABAA942A-6722-4209-9DCF-318E04318648}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{B09A4945-FA8C-42C0-8462-E11E8E874902}"
+	ProjectSection(SolutionItems) = preProject
+		build\build.ps1 = build\build.ps1
+		build\cover.ps1 = build\cover.ps1
+		build\test.ps1 = build\test.ps1
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
