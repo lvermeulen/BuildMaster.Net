@@ -123,49 +123,45 @@ namespace BuildMaster.Net
         /// </summary>
         public async Task<IEnumerable<PrivilegesExtended>> Security_GetPrivilegesAsync(
             int userDirectory_Id,
-            string principalType_Code)
+            PrincipalTypes principalType_Code)
         {
             var queryParamValues = QueryParamValues.From(
                 new NamedValue(nameof(userDirectory_Id).Capitalize(), userDirectory_Id),
-                new NamedValue(nameof(principalType_Code).Capitalize(), principalType_Code)
+                new NamedValue(nameof(principalType_Code).Capitalize(), StringExtensions.FromPrincipalType(principalType_Code))
             );
 
             return await ExecuteNativeApiMethodAsync<IEnumerable<PrivilegesExtended>>(nameof(Security_GetPrivilegesAsync).WithoutAsyncSuffix(), queryParamValues).ConfigureAwait(false);
         }
 
-        //TODO: return (Roles, RoleTasksExtended)
         /// <summary>
         /// Gets the specified role, along with all the tasks that comprise the role
         /// </summary>
-        public async Task<IEnumerable<Roles>> Security_GetRoleAsync(int role_Id)
+        public async Task<RolesRoleTasksExtended> Security_GetRoleAsync(int role_Id)
         {
             var queryParamValues = QueryParamValues.From(
                 new NamedValue(nameof(role_Id).Capitalize(), role_Id)
             );
 
-            return await ExecuteNativeApiMethodAsync<IEnumerable<Roles>>(nameof(Security_GetRoleAsync).WithoutAsyncSuffix(), queryParamValues).ConfigureAwait(false);
+            return await ExecuteNativeApiMethodAsync<RolesRoleTasksExtended>(nameof(Security_GetRoleAsync).WithoutAsyncSuffix(), queryParamValues).ConfigureAwait(false);
         }
 
-        //TODO: return (Roles, RoleTasksExtended)
         /// <summary>
         /// Gets all the roles in the system, along with all the tasks comprising each role
         /// </summary>
-        public async Task<IEnumerable<Roles>> Security_GetRolesAsync(bool includeAnonymous_Indicator)
+        public async Task<RolesRoleTasksExtended> Security_GetRolesAsync(bool includeAnonymous_Indicator)
         {
             var queryParamValues = QueryParamValues.From(
                 new NamedValue(nameof(includeAnonymous_Indicator).Capitalize(), includeAnonymous_Indicator.ToYnIndicator())
             );
 
-            return await ExecuteNativeApiMethodAsync<IEnumerable<Roles>>(nameof(Security_GetRolesAsync).WithoutAsyncSuffix(), queryParamValues).ConfigureAwait(false);
+            return await ExecuteNativeApiMethodAsync<RolesRoleTasksExtended>(nameof(Security_GetRolesAsync).WithoutAsyncSuffix(), queryParamValues).ConfigureAwait(false);
         }
 
         /// <summary>
         /// Gets all of the tasks in the system
         /// </summary>
-        public async Task<IEnumerable<Tasks>> Security_GetTasksAsync()
-        {
-            return await ExecuteNativeApiMethodAsync<IEnumerable<Tasks>>(nameof(Security_GetTasksAsync).WithoutAsyncSuffix()).ConfigureAwait(false);
-        }
+        public async Task<IEnumerable<Native.Models.Task>> Security_GetTasksAsync() => 
+            await ExecuteNativeApiMethodAsync<IEnumerable<Native.Models.Task>>(nameof(Security_GetTasksAsync).WithoutAsyncSuffix()).ConfigureAwait(false);
 
         /// <summary>
         /// Removes the specified user as a named user

@@ -2,9 +2,8 @@
 
 namespace BuildMaster.Net.Native.Models
 {
-    public class RoleTasksExtended
+    public class Task
     {
-        public int Role_Id { get; set; }
         public int Task_Id { get; set; }
         public string Task_Name { get; set; }
         public bool Application_Scopeable_Indicator { get; set; }

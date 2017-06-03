@@ -1,6 +1,8 @@
 ﻿namespace BuildMaster.Net.Native.Models
 {
-    public class Tasks
+    public enum PrincipalTypes
     {
+        User,
+        Group
     }
 }

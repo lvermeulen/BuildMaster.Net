@@ -1,4 +1,5 @@
 ﻿using System;
+using BuildMaster.Net.Native.Models;
 
 namespace BuildMaster.Net.Common
 {
@@ -41,5 +42,7 @@ namespace BuildMaster.Net.Common
         public static string ToTrueFalse(this bool value) => value ? "true" : "false";
 
         public static bool ToBool(this string s) => s.Equals("true", StringComparison.OrdinalIgnoreCase);
+
+        public static string FromPrincipalType(PrincipalTypes principalType) => principalType == PrincipalTypes.User ? "U" : "G";
     }
 }
