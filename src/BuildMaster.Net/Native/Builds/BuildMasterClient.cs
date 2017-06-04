@@ -89,17 +89,16 @@ namespace BuildMaster.Net
             return await ExecuteNativeApiMethodAsync<BuildExecutionsExtended>(nameof(Builds_GetExecutionAsync).WithoutAsyncSuffix(), queryParamValues).ConfigureAwait(false);
         }
 
-        //TODO: returns (BuildExecutionsExtended, BuildExecution_DeploymentPlans, BuildExecution_DeploymentPlanActionGroups, BuildExecution_ActionGroupActions, BuildExecution_ActionGroupActionLogEntries)
         /// <summary>
         /// Gets all details regarding a specific build execution
         /// </summary>
-        public async Task<BuildExecutionsExtended> Builds_GetExecutionExtendedAsync(int execution_Id)
+        public async Task<BuildExecution> Builds_GetExecutionExtendedAsync(int execution_Id)
         {
             var queryParamValues = QueryParamValues.From(
                 new NamedValue(nameof(execution_Id).Capitalize(), execution_Id)
             );
 
-            return await ExecuteNativeApiMethodAsync<BuildExecutionsExtended>(nameof(Builds_GetExecutionExtendedAsync).WithoutAsyncSuffix(), queryParamValues).ConfigureAwait(false);
+            return await ExecuteNativeApiMethodAsync<BuildExecution>(nameof(Builds_GetExecutionExtendedAsync).WithoutAsyncSuffix(), queryParamValues).ConfigureAwait(false);
         }
 
         /// <summary>

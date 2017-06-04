@@ -15,18 +15,28 @@ namespace BuildMaster.Net.Tests
             Assert.NotEmpty(results);
         }
 
-        [Fact]
-        public async Task Builds_GetExecutionsAsync()
+        [Theory]
+        [InlineData(5)]
+        public async Task Builds_GetExecutionExtendedAsync(int executionId)
         {
-            var results = await _client.Builds_GetExecutionsAsync(1, null, null, null, 1000).ConfigureAwait(false);
+            var result = await _client.Builds_GetExecutionExtendedAsync(executionId).ConfigureAwait(false);
+            Assert.NotNull(result);
+        }
+
+        [Theory]
+        [InlineData(1, "0.0.1", "1")]
+        public async Task Builds_GetExecutionsAsync(int applicationId, string releaseNumber, string buildNumber)
+        {
+            var results = await _client.Builds_GetExecutionsAsync(applicationId, releaseNumber, buildNumber, null, 1000).ConfigureAwait(false);
             Assert.NotNull(results);
             Assert.NotEmpty(results);
         }
 
-        [Fact]
-        public async Task Builds_GetPromotionsAsync()
+        [Theory]
+        [InlineData(1, "0.0.1", "1")]
+        public async Task Builds_GetPromotionsAsync(int applicationId, string releaseNumber, string buildNumber)
         {
-            var results = await _client.Builds_GetPromotionsAsync(1, "0.0.0", null).ConfigureAwait(false);
+            var results = await _client.Builds_GetPromotionsAsync(applicationId, releaseNumber, buildNumber).ConfigureAwait(false);
             Assert.NotNull(results);
             Assert.NotEmpty(results);
         }
