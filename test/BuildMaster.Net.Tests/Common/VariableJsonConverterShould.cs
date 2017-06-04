@@ -15,6 +15,7 @@ namespace BuildMaster.Net.Tests.Common
             Assert.NotNull(server);
             Assert.NotNull(server.Variables);
         }
+
         [Fact]
         public void ConvertServerVariables()
         {
@@ -24,6 +25,16 @@ namespace BuildMaster.Net.Tests.Common
             Assert.NotNull(server);
             Assert.NotNull(server.Variables);
             Assert.NotEmpty(server.Variables);
+        }
+
+        [Fact]
+        public void ConvertVariables()
+        {
+            const string JSON = @"{""TestVariable"":""TestVariableValue"",""TestVariable2"":{""value"":""TestVariable2Value"",""sensitive"":true}}";
+
+            var variables = JsonConvert.DeserializeObject<Net.Common.Models.Variables>(JSON);
+            Assert.NotNull(variables);
+            Assert.NotEmpty(variables);
         }
     }
 }

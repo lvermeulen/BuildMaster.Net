@@ -9,10 +9,10 @@ namespace BuildMaster.Net
 {
     public partial class BuildMasterClient
     {
-        public async Task<IEnumerable<Variable>> GetAllGlobalConfigurationVariables()
+        public async Task<Common.Models.Variables> GetAllGlobalConfigurationVariables()
         {
             var response = await GetVariablesApiClient("global")
-                .GetJsonAsync<IEnumerable<Variable>>();
+                .GetJsonAsync<Common.Models.Variables>();
 
             return response; //TODO: inline
         }

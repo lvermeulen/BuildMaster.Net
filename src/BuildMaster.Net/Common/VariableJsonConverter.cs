@@ -7,8 +7,10 @@ using Newtonsoft.Json.Linq;
 
 namespace BuildMaster.Net.Common
 {
-    public class VariableJsonConverter : JsonConverter
+    public class VariableJsonConverter<TResult> : JsonConverter
+        where TResult : IList<Variable>, new()
     {
+        // ReSharper disable once StaticMemberInGenericType
         private static readonly Type[] s_types = { typeof(Variable), typeof(SensitiveVariable), typeof(ScopedVariable) };
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
@@ -35,7 +37,7 @@ namespace BuildMaster.Net.Common
                 return null;
             }
 
-            var results = new List<Variable>();
+            var results = new TResult();
 
             var jobject = JObject.Load(reader);
             foreach (var property in jobject.Children<JProperty>())

@@ -9,7 +9,7 @@ namespace BuildMaster.Net.Infrastructure.Models
     {
         public string Name { get; set; } // same format as server.name
         public string ParentName { get; set; } // a string containing the name of the parent environment, or null if there is no parent environment
-        [JsonConverter(typeof(VariableJsonConverter))]
+        [JsonConverter(typeof(VariableJsonConverter<List<Variable>>))]
         public List<Variable> Variables { get; set; } // same format as server.variables
     }
 }
