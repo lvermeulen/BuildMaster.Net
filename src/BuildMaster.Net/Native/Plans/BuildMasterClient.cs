@@ -198,7 +198,7 @@ namespace BuildMaster.Net
         /// <summary>
         /// Gets the details of the specified action
         /// </summary>
-        public async Task<ActionGroupActionsExtended> Plans_GetActionAsync(
+        public async Task<ActionGroupActionExtended> Plans_GetActionAsync(
             int actionGroup_Id,
             int action_Sequence)
         {
@@ -207,7 +207,7 @@ namespace BuildMaster.Net
                 new NamedValue(nameof(action_Sequence).Capitalize(), action_Sequence)
             );
 
-            return await ExecuteNativeApiMethodAsync<ActionGroupActionsExtended>(nameof(Plans_GetActionAsync).WithoutAsyncSuffix(), queryParamValues).ConfigureAwait(false);
+            return await ExecuteNativeApiMethodAsync<ActionGroupActionExtended>(nameof(Plans_GetActionAsync).WithoutAsyncSuffix(), queryParamValues).ConfigureAwait(false);
         }
 
         /// <summary>
