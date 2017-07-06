@@ -158,7 +158,7 @@ namespace BuildMaster.Net
         /// Gets the specified number of applications in the system, or all if null is passed in
         /// </summary>
         public async Task<IEnumerable<ApplicationExtended>> Applications_GetApplicationsAsync(
-            int? application_Count,
+            int? application_Count = null,
             bool includeInactive_Indicator = false)
         {
             var queryParamValues = QueryParamValues.From(
