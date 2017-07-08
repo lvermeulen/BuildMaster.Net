@@ -12,11 +12,11 @@ BuildMaster.Net is a C# client for [Inedo BuildMaster](https://inedo.com/buildma
 	* [ ] AdminEdit                    
 	* [X] ApplicationGroups            
 	* [X] Applications                 
-	* [ ] Artifacts                    
-	* [ ] BuildOutputs                 
+	* [X] Artifacts                    
+	* [X] BuildOutputs                 
 	* [X] Builds                       
-	* [ ] BuildSchedules               
-	* [ ] BuildTestResults             
+	* [X] BuildSchedules               
+	* [X] BuildTestResults             
 	* [ ] ChangeControlPerformances    
 	* [ ] ChangeControls               
 	* [ ] Configuration                
@@ -24,8 +24,8 @@ BuildMaster.Net is a C# client for [Inedo BuildMaster](https://inedo.com/buildma
 	* [X] Credentials                  
 	* [ ] DatabaseChangeScripts        
 	* [ ] DatabaseConnections          
-	* [ ] EventListeners               
-	* [ ] Events                       
+	* [X] EventListeners               
+	* [X] Events                       
 	* [ ] Executions                   
 	* [ ] ExtensionConfiguration       
 	* [ ] Issues                       
