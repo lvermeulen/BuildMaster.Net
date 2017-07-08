@@ -31,7 +31,7 @@ BuildMaster.Net is a C# client for [Inedo BuildMaster](https://inedo.com/buildma
 	* [ ] Issues                       
 	* [X] LegacyExecutions             
 	* [X] LogMessages                  
-	* [ ] Notifiers                    
+	* [X] Notifiers                    
 	* [X] Pipelines                    
 	* [X] Plans                        
 	* [X] Promotions                   
@@ -41,5 +41,5 @@ BuildMaster.Net is a C# client for [Inedo BuildMaster](https://inedo.com/buildma
 	* [ ] ScriptAssets                 
 	* [ ] Scripts                      
 	* [X] Security                     
-	* [ ] UserConfiguration            
-	* [ ] Users                        
+	* [X] UserConfiguration            
+	* [X] Users                        
