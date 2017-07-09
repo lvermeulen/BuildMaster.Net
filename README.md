@@ -22,20 +22,20 @@ BuildMaster.Net is a C# client for [Inedo BuildMaster](https://inedo.com/buildma
 	* [X] Configuration                
 	* [X] ConfigurationFiles           
 	* [X] Credentials                  
-	* [ ] DatabaseChangeScripts        
-	* [ ] DatabaseConnections          
+	* [X] DatabaseChangeScripts        
+	* [X] DatabaseConnections          
 	* [X] EventListeners               
 	* [X] Events                       
-	* [ ] Executions                   
-	* [ ] ExtensionConfiguration       
-	* [ ] Issues                       
+	* [X] Executions                   
+	* [X] ExtensionConfiguration       
+	* [X] Issues                       
 	* [X] LegacyExecutions             
 	* [X] LogMessages                  
 	* [X] Notifiers                    
 	* [X] Pipelines                    
 	* [X] Plans                        
 	* [X] Promotions                   
-	* [ ] Providers                    
+	* [X] Providers                    
 	* [X] ReleaseTemplates             
 	* [X] RetensionPolicies            
 	* [X] ScriptAssets                 
