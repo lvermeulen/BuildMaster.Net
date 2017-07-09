@@ -12,13 +12,13 @@ namespace BuildMaster.Net
         /// <summary>
         /// Gets a manual execution
         /// </summary>
-        public async Task<ManualExecutionsExtended> Executions_GetManualExecutionAsync(int execution_Id)
+        public async Task<ManualExecutionExtended> Executions_GetManualExecutionAsync(int execution_Id)
         {
             var queryParamValues = QueryParamValues.From(
                 new NamedValue(nameof(execution_Id).Capitalize(), execution_Id)
             );
 
-            return await ExecuteNativeApiMethodAsync<ManualExecutionsExtended>(nameof(Executions_GetManualExecutionAsync).WithoutAsyncSuffix(), queryParamValues).ConfigureAwait(false);
+            return await ExecuteNativeApiMethodAsync<ManualExecutionExtended>(nameof(Executions_GetManualExecutionAsync).WithoutAsyncSuffix(), queryParamValues).ConfigureAwait(false);
         }
     }
 }
