@@ -9,44 +9,19 @@ namespace BuildMaster.Net
 {
     public partial class BuildMasterClient
     {
-        public async Task<Common.Models.Variables> GetAllGlobalConfigurationVariables()
-        {
-            var response = await GetVariablesApiClient("global")
-                .GetJsonAsync<Common.Models.Variables>();
+        public async Task<Common.Models.Variables> GetAllGlobalConfigurationVariables() => await GetVariablesApiClient("global")
+            .GetJsonAsync<Common.Models.Variables>();
 
-            return response; //TODO: inline
-        }
+        public async Task<bool> SetAllGlobalConfigurationVariables(IEnumerable<Variable> variables) => (await GetVariablesApiClient("global").PutJsonAsync(variables))
+            .IsSuccessStatusCode;
 
-        public async Task<bool> SetAllGlobalConfigurationVariables(IEnumerable<Variable> variables)
-        {
-            var response = await GetVariablesApiClient("global")
-                .PutJsonAsync(variables);
+        public async Task<Variable> GetSingleGlobalConfigurationVariable(string variableName) => await GetVariablesApiClient($"global/{variableName}")
+            .GetJsonAsync<Variable>();
 
-            return response.IsSuccessStatusCode;
-        }
+        public async Task<bool> SetSingleGlobalConfigurationVariable(Variable variable) => (await GetVariablesApiClient($"global/{variable?.Name}").PutJsonAsync(variable))
+            .IsSuccessStatusCode;
 
-        public async Task<Variable> GetSingleGlobalConfigurationVariable(string variableName)
-        {
-            var response = await GetVariablesApiClient($"global/{variableName}")
-                .GetJsonAsync<Variable>();
-
-            return response; //TODO: inline
-        }
-
-        public async Task<bool> SetSingleGlobalConfigurationVariable(Variable variable)
-        {
-            var response = await GetVariablesApiClient($"global/{variable?.Name}")
-                .PutJsonAsync(variable);
-
-            return response.IsSuccessStatusCode;
-        }
-
-        public async Task<bool> DeleteSingleGlobalConfigurationVariable(string variableName)
-        {
-            var response = await GetVariablesApiClient($"global/{variableName}")
-                .DeleteAsync();
-
-            return response.IsSuccessStatusCode;
-        }
+        public async Task<bool> DeleteSingleGlobalConfigurationVariable(string variableName) => (await GetVariablesApiClient($"global/{variableName}").DeleteAsync())
+            .IsSuccessStatusCode;
     }
 }

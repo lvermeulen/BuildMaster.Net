@@ -15,32 +15,17 @@ namespace BuildMaster.Net
             .SetQueryParams(queryParamValues)
             .AllowAnyHttpStatus();
 
-        public async Task<IEnumerable<Server>> ListServersAsync()
-        {
-            var response = await GetInfrastructureApiClient("servers/list")
-                .PostAsync(new StringContent(""))
-                .ReceiveJson<IEnumerable<Server>>();
+        public async Task<IEnumerable<Server>> ListServersAsync() => await GetInfrastructureApiClient("servers/list")
+            .PostAsync(new StringContent(""))
+            .ReceiveJson<IEnumerable<Server>>();
 
-            return response; //TODO: inline
-        }
+        public async Task<Server> CreateServerAsync(Server server) => await GetInfrastructureApiClient($"servers/create/{server?.Name}")
+            .PostJsonAsync(server)
+            .ReceiveJson<Server>();
 
-        public async Task<Server> CreateServerAsync(Server server)
-        {
-            var response = await GetInfrastructureApiClient($"servers/create/{server?.Name}")
-                .PostJsonAsync(server)
-                .ReceiveJson<Server>();
-
-            return response; //TODO: inline
-        }
-
-        public async Task<Server> UpdateServerAsync(Server server)
-        {
-            var response = await GetInfrastructureApiClient($"servers/update/{server?.Name}")
-                .PostJsonAsync(server)
-                .ReceiveJson<Server>();
-
-            return response; //TODO: inline
-        }
+        public async Task<Server> UpdateServerAsync(Server server) => await GetInfrastructureApiClient($"servers/update/{server?.Name}")
+            .PostJsonAsync(server)
+            .ReceiveJson<Server>();
 
         public async Task<bool> DeleteServerAsync(Server server)
         {
@@ -50,32 +35,17 @@ namespace BuildMaster.Net
             return response.IsSuccessStatusCode;
         }
 
-        public async Task<IEnumerable<ServerRole>> ListServerRolesAsync()
-        {
-            var response = await GetInfrastructureApiClient("roles/list")
-                .PostAsync(new StringContent(""))
-                .ReceiveJson<IEnumerable<ServerRole>>();
+        public async Task<IEnumerable<ServerRole>> ListServerRolesAsync() => await GetInfrastructureApiClient("roles/list")
+            .PostAsync(new StringContent(""))
+            .ReceiveJson<IEnumerable<ServerRole>>();
 
-            return response; //TODO: inline
-        }
+        public async Task<ServerRole> CreateServerRoleAsync(ServerRole serverRole) => await GetInfrastructureApiClient($"roles/create/{serverRole?.Name}")
+            .PostJsonAsync(serverRole)
+            .ReceiveJson<ServerRole>();
 
-        public async Task<ServerRole> CreateServerRoleAsync(ServerRole serverRole)
-        {
-            var response = await GetInfrastructureApiClient($"roles/create/{serverRole?.Name}")
-                .PostJsonAsync(serverRole)
-                .ReceiveJson<ServerRole>();
-
-            return response; //TODO: inline
-        }
-
-        public async Task<ServerRole> UpdateServerRoleAsync(ServerRole serverRole)
-        {
-            var response = await GetInfrastructureApiClient($"roles/update/{serverRole?.Name}")
-                .PostJsonAsync(serverRole)
-                .ReceiveJson<ServerRole>();
-
-            return response; //TODO: inline
-        }
+        public async Task<ServerRole> UpdateServerRoleAsync(ServerRole serverRole) => await GetInfrastructureApiClient($"roles/update/{serverRole?.Name}")
+            .PostJsonAsync(serverRole)
+            .ReceiveJson<ServerRole>();
 
         public async Task<bool> DeleteServerRoleAsync(ServerRole serverRole)
         {
@@ -85,32 +55,17 @@ namespace BuildMaster.Net
             return response.IsSuccessStatusCode;
         }
 
-        public async Task<IEnumerable<Environment>> ListEnvironmentsAsync()
-        {
-            var response = await GetInfrastructureApiClient("environments/list")
-                .PostAsync(new StringContent(""))
-                .ReceiveJson<IEnumerable<Environment>>();
+        public async Task<IEnumerable<Environment>> ListEnvironmentsAsync() => await GetInfrastructureApiClient("environments/list")
+            .PostAsync(new StringContent(""))
+            .ReceiveJson<IEnumerable<Environment>>();
 
-            return response; //TODO: inline
-        }
+        public async Task<Environment> CreateEnvironmentsAsync(Environment environment) => await GetInfrastructureApiClient($"environments/create/{environment?.Name}")
+            .PostJsonAsync(environment)
+            .ReceiveJson<Environment>();
 
-        public async Task<Environment> CreateEnvironmentsAsync(Environment environment)
-        {
-            var response = await GetInfrastructureApiClient($"environments/create/{environment?.Name}")
-                .PostJsonAsync(environment)
-                .ReceiveJson<Environment>();
-
-            return response; //TODO: inline
-        }
-
-        public async Task<Environment> UpdateEnvironmentsAsync(Environment environment)
-        {
-            var response = await GetInfrastructureApiClient($"environments/update/{environment?.Name}")
-                .PostJsonAsync(environment)
-                .ReceiveJson<Environment>();
-
-            return response; //TODO: inline
-        }
+        public async Task<Environment> UpdateEnvironmentsAsync(Environment environment) => await GetInfrastructureApiClient($"environments/update/{environment?.Name}")
+            .PostJsonAsync(environment)
+            .ReceiveJson<Environment>();
 
         public async Task<bool> DeleteEnvironmentsAsync(Environment environment)
         {

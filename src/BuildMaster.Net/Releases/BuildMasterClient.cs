@@ -30,11 +30,8 @@ namespace BuildMaster.Net
             );
 
             //TODO: verify empty path or null
-            var response = await GetReleasesApiClient("", queryParamValues)
+            return await GetReleasesApiClient("", queryParamValues)
                 .GetJsonAsync<IEnumerable<Release>>();
-
-            //TODO: inline
-            return response;
         }
 
         public async Task<Release> CreateReleaseAsync(CreateReleaseRequest request)
@@ -49,12 +46,9 @@ namespace BuildMaster.Net
                 //TODO: Variables
             );
 
-            var response = await GetReleasesApiClient("create", queryParamValues)
+            return await GetReleasesApiClient("create", queryParamValues)
                 .PutAsync(new StringContent(""))
                 .ReceiveJson<Release>();
-
-            //TODO: inline
-            return response;
         }
 
         public async Task<Release> CreateReleaseFromTemplateAsync(CreateReleaseFromTemplateRequest request)
@@ -68,12 +62,9 @@ namespace BuildMaster.Net
                 //TODO: Variables
             );
 
-            var response = await GetReleasesApiClient("create-from-template", queryParamValues)
+            return await GetReleasesApiClient("create-from-template", queryParamValues)
                 .PutAsync(new StringContent(""))
                 .ReceiveJson<Release>();
-
-            //TODO: inline
-            return response;
         }
 
         public async Task<IEnumerable<Package>> GetPackagesAsync(GetPackagesRequest request)
@@ -93,11 +84,8 @@ namespace BuildMaster.Net
             );
 
             //TODO: verify empty path or null
-            var response = await GetReleasesApiClient("packages", queryParamValues)
+            return await GetReleasesApiClient("packages", queryParamValues)
                 .GetJsonAsync<IEnumerable<Package>>();
-
-            //TODO: inline
-            return response;
         }
 
         public async Task<Package> CreateReleasePackageAsync(CreateReleasePackageRequest request)
@@ -111,12 +99,9 @@ namespace BuildMaster.Net
                 //TODO: Variables
             );
 
-            var response = await GetReleasesApiClient("packages/create", queryParamValues)
+            return await GetReleasesApiClient("packages/create", queryParamValues)
                 .PutAsync(new StringContent(""))
                 .ReceiveJson<Package>();
-
-            //TODO: inline
-            return response;
         }
 
         public async Task<IEnumerable<Deployment>> GetDeploymentsAsync(GetDeploymentsRequest request)
@@ -135,11 +120,8 @@ namespace BuildMaster.Net
             );
 
             //TODO: verify empty path or null
-            var response = await GetReleasesApiClient("packages/deployments", queryParamValues)
+            return await GetReleasesApiClient("packages/deployments", queryParamValues)
                 .GetJsonAsync<IEnumerable<Deployment>>();
-
-            //TODO: inline
-            return response;
         }
 
         public async Task<Deployment> DeployPackageAsync(DeployPackageRequest request)
@@ -156,12 +138,9 @@ namespace BuildMaster.Net
                 //TODO: Variables
             );
 
-            var response = await GetReleasesApiClient("packages/deploy", queryParamValues)
+            return await GetReleasesApiClient("packages/deploy", queryParamValues)
                 .PutAsync(new StringContent(""))
                 .ReceiveJson<Deployment>();
-
-            //TODO: inline
-            return response;
         }
 
         public async Task<bool> RejectReleasePackageAsync(RejectReleasePackageRequest request)
@@ -175,11 +154,8 @@ namespace BuildMaster.Net
                 new NamedValue(nameof(request.ApplicationName).Decapitalize(), request.ApplicationName)
             );
 
-            var response = await GetReleasesApiClient("packages/reject", queryParamValues)
-                .DeleteAsync();
-
-            //TODO: inline
-            return response.IsSuccessStatusCode;
+            return (await GetReleasesApiClient("packages/reject", queryParamValues).DeleteAsync())
+                .IsSuccessStatusCode;
         }
     }
 }

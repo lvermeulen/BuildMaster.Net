@@ -9,44 +9,19 @@ namespace BuildMaster.Net
 {
     public partial class BuildMasterClient
     {
-        public async Task<IEnumerable<ScopedVariable>> GetAllScopedConfigurationVariables()
-        {
-            var response = await GetVariablesApiClient("scoped/all")
-                .GetJsonAsync<IEnumerable<ScopedVariable>>();
+        public async Task<IEnumerable<ScopedVariable>> GetAllScopedConfigurationVariables() => await GetVariablesApiClient("scoped/all")
+            .GetJsonAsync<IEnumerable<ScopedVariable>>();
 
-            return response; //TODO: inline
-        }
+        public async Task<bool> SetAllScopedConfigurationVariables(IEnumerable<ScopedVariable> variables) => (await GetVariablesApiClient("scoped/all").PutJsonAsync(variables))
+            .IsSuccessStatusCode;
 
-        public async Task<bool> SetAllScopedConfigurationVariables(IEnumerable<ScopedVariable> variables)
-        {
-            var response = await GetVariablesApiClient("scoped/all")
-                .PutJsonAsync(variables);
+        public async Task<ScopedVariable> GetSingleScopedConfigurationVariable(string variableName) => await GetVariablesApiClient($"scoped/single/{variableName}")
+            .GetJsonAsync<ScopedVariable>();
 
-            return response.IsSuccessStatusCode;
-        }
+        public async Task<bool> SetSingleScopedConfigurationVariable(ScopedVariable variable) => (await GetVariablesApiClient($"scoped/single/{variable?.Name}").PutJsonAsync(variable))
+            .IsSuccessStatusCode;
 
-        public async Task<ScopedVariable> GetSingleScopedConfigurationVariable(string variableName)
-        {
-            var response = await GetVariablesApiClient($"scoped/single/{variableName}")
-                .GetJsonAsync<ScopedVariable>();
-
-            return response; //TODO: inline
-        }
-
-        public async Task<bool> SetSingleScopedConfigurationVariable(ScopedVariable variable)
-        {
-            var response = await GetVariablesApiClient($"scoped/single/{variable?.Name}")
-                .PutJsonAsync(variable);
-
-            return response.IsSuccessStatusCode;
-        }
-
-        public async Task<bool> DeleteSingleScopedConfigurationVariable(string variableName)
-        {
-            var response = await GetVariablesApiClient($"scoped/single/{variableName}")
-                .DeleteAsync();
-
-            return response.IsSuccessStatusCode;
-        }
+        public async Task<bool> DeleteSingleScopedConfigurationVariable(string variableName) => (await GetVariablesApiClient($"scoped/single/{variableName}").DeleteAsync())
+            .IsSuccessStatusCode;
     }
 }
