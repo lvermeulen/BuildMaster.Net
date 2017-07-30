@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8D936F26-5C87-482C-B190-E325921C897B}"
 	ProjectSection(SolutionItems) = preProject
@@ -9,14 +9,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.gitignore = .gitignore
 		appveyor.yml = appveyor.yml
 		codecov.yml = codecov.yml
-		global.json = global.json
 		LICENSE = LICENSE
 		README.md = README.md
 	EndProjectSection
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "BuildMaster.Net", "src\BuildMaster.Net\BuildMaster.Net.xproj", "{D2D2566E-D9AE-427C-9F17-24B197C53DFD}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "BuildMaster.Net.Tests", "test\BuildMaster.Net.Tests\BuildMaster.Net.Tests.xproj", "{DD9BE8D7-5217-4F04-A19A-A809BEBE0FED}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{ABAA942A-6722-4209-9DCF-318E04318648}"
 EndProject
@@ -26,6 +21,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{B09A4945
 		build\cover.ps1 = build\cover.ps1
 		build\test.ps1 = build\test.ps1
 	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuildMaster.Net", "src\BuildMaster.Net\BuildMaster.Net.csproj", "{D2D2566E-D9AE-427C-9F17-24B197C53DFD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuildMaster.Net.Tests", "test\BuildMaster.Net.Tests\BuildMaster.Net.Tests.csproj", "{DD9BE8D7-5217-4F04-A19A-A809BEBE0FED}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
