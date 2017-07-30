@@ -8,7 +8,7 @@ BuildMaster.Net is a C# client for [Inedo BuildMaster](https://inedo.com/buildma
 * [X] Infrastructure API
 * [X] Releases API
 * [X] Variables API
-* [ ] Native API
+* [X] Native API
 	* [X] AdminEdit                    
 	* [X] ApplicationGroups            
 	* [X] Applications                 
