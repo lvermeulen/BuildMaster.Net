@@ -15,7 +15,7 @@ namespace BuildMaster.Net.Common
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
-            throw new NotImplementedException();
+            // intentionally left blank
         }
 
         private bool TryGetJPropertyNameValue(JProperty property, string name, out string value)

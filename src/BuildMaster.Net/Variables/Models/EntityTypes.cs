@@ -9,7 +9,7 @@ namespace BuildMaster.Net.Variables.Models
         server,
         role,
         application,
-        [JsonProperty("application-group")] //TODO: verify EnumConverter
+        [JsonProperty("application-group")]
         applicationgroup,
         environment
     }
