@@ -14,7 +14,7 @@ namespace BuildMaster.Net
         private IFlurlClient GetReleasesApiClient(string path, object queryParamValues = null) => GetApiClient("/api/releases")
             .AppendPathSegment(path)
             .SetQueryParams(queryParamValues)
-            .AllowAnyHttpStatus();
+            .ConfigureClient(settings => settings.OnError = ErrorHandler);
 
         public async Task<IEnumerable<Release>> GetReleasesAsync(GetReleasesRequest request)
         {
@@ -26,10 +26,9 @@ namespace BuildMaster.Net
                 new NamedValue(nameof(request.ReleaseNumber).Decapitalize(), request.ReleaseNumber),
                 new NamedValue(nameof(request.PipelineId).Decapitalize(), request.PipelineId),
                 new NamedValue(nameof(request.PipelineName).Decapitalize(), request.PipelineName),
-                new NamedValue(nameof(request.Status).Decapitalize(), request.Status.ToString().Decapitalize()) //TODO: verify Status.ToString()
+                new NamedValue(nameof(request.Status).Decapitalize(), request.Status.ToString().Decapitalize())
             );
 
-            //TODO: verify empty path or null
             return await GetReleasesApiClient("", queryParamValues)
                 .GetJsonAsync<IEnumerable<Release>>();
         }
@@ -42,8 +41,8 @@ namespace BuildMaster.Net
                 new NamedValue(nameof(request.ReleaseName).Decapitalize(), request.ReleaseName),
                 new NamedValue(nameof(request.ReleaseNumber).Decapitalize(), request.ReleaseNumber),
                 new NamedValue(nameof(request.PipelineId).Decapitalize(), request.PipelineId),
-                new NamedValue(nameof(request.PipelineName).Decapitalize(), request.PipelineName)
-                //TODO: Variables
+                new NamedValue(nameof(request.PipelineName).Decapitalize(), request.PipelineName),
+                new NamedValue(nameof(request.Variables).Decapitalize(), request.Variables)
             );
 
             return await GetReleasesApiClient("create", queryParamValues)
@@ -83,7 +82,6 @@ namespace BuildMaster.Net
                 new NamedValue(nameof(request.Status).Decapitalize(), request.Status.ToString())
             );
 
-            //TODO: verify empty path or null
             return await GetReleasesApiClient("packages", queryParamValues)
                 .GetJsonAsync<IEnumerable<Package>>();
         }
@@ -119,7 +117,6 @@ namespace BuildMaster.Net
                 new NamedValue(nameof(request.Status).Decapitalize(), request.Status.ToString())
             );
 
-            //TODO: verify empty path or null
             return await GetReleasesApiClient("packages/deployments", queryParamValues)
                 .GetJsonAsync<IEnumerable<Deployment>>();
         }

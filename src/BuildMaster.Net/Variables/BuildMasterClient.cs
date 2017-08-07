@@ -9,6 +9,6 @@ namespace BuildMaster.Net
         private IFlurlClient GetVariablesApiClient(string path, object queryParamValues = null) => GetApiClient("/api/variables")
             .AppendPathSegment(path)
             .SetQueryParams(queryParamValues)
-            .AllowAnyHttpStatus();
+            .ConfigureClient(settings => settings.OnError = ErrorHandler);
     }
 }

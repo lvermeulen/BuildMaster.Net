@@ -13,7 +13,7 @@ namespace BuildMaster.Net
         private IFlurlClient GetInfrastructureApiClient(string path, object queryParamValues = null) => GetApiClient("/api/infrastructure")
             .AppendPathSegment(path)
             .SetQueryParams(queryParamValues)
-            .AllowAnyHttpStatus();
+            .ConfigureClient(settings => settings.OnError = ErrorHandler);
 
         public async Task<IEnumerable<Server>> ListServersAsync() => await GetInfrastructureApiClient("servers/list")
             .PostAsync(new StringContent(""))

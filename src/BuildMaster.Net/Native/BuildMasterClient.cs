@@ -11,7 +11,7 @@ namespace BuildMaster.Net
         private IFlurlClient GetNativeApiClient(string path, object queryParamValues = null) => GetApiClient("/api/json")
             .AppendPathSegment(path)
             .SetQueryParams(queryParamValues)
-            .AllowAnyHttpStatus();
+            .ConfigureClient(settings => settings.OnError = ErrorHandler);
 
         private async Task<TResult> ExecuteNativeApiMethodAsync<TResult>(string nativeApiMethodName, IDictionary<string, object> parameters = null)
         {
