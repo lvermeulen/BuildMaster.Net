@@ -15,8 +15,8 @@ namespace BuildMaster.Net
         public async Task<bool> SetAllGlobalConfigurationVariables(IEnumerable<Variable> variables) => (await GetVariablesApiClient("global").PutJsonAsync(variables))
             .IsSuccessStatusCode;
 
-        public async Task<Variable> GetSingleGlobalConfigurationVariable(string variableName) => await GetVariablesApiClient($"global/{variableName}")
-            .GetJsonAsync<Variable>();
+        public async Task<string> GetSingleGlobalConfigurationVariable(string variableName) => await GetVariablesApiClient($"global/{variableName}")
+            .GetStringAsync();
 
         public async Task<bool> SetSingleGlobalConfigurationVariable(Variable variable) => (await GetVariablesApiClient($"global/{variable?.Name}").PutJsonAsync(variable))
             .IsSuccessStatusCode;

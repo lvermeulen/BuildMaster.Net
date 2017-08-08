@@ -9,34 +9,22 @@ namespace BuildMaster.Net
 {
     public partial class BuildMasterClient
     {
-        public async Task<IEnumerable<Variable>> GetAllPackageConfigurationVariables(string applicationName, string releaseNumber, string packageNumber) => await GetVariablesApiClient($"releases/{applicationName}/{releaseNumber}/{packageNumber}")
-            .GetJsonAsync<IEnumerable<Variable>>();
+        public async Task<Common.Models.Variables> GetAllPackageConfigurationVariables(string applicationName, string releaseNumber, string packageNumber) => await GetVariablesApiClient($"packages/{applicationName}/{releaseNumber}/{packageNumber}")
+            .GetJsonAsync<Common.Models.Variables>();
 
-        public async Task<bool> SetAllPackageConfigurationVariables(string applicationName, string releaseNumber, string packageNumber, IEnumerable<Variable> variables)
-        {
-            var response = await GetVariablesApiClient($"releases/{applicationName}/{releaseNumber}/{packageNumber}")
-                .PutJsonAsync(variables);
+        public async Task<bool> SetAllPackageConfigurationVariables(string applicationName, string releaseNumber, string packageNumber, IEnumerable<Variable> variables) => (await GetVariablesApiClient($"packages/{applicationName}/{releaseNumber}/{packageNumber}")
+            .PutJsonAsync(variables))
+            .IsSuccessStatusCode;
 
-            return response.IsSuccessStatusCode;
-        }
+        public async Task<string> GetSinglePackageConfigurationVariable(string applicationName, string releaseNumber, string packageNumber, string variableName) => await GetVariablesApiClient($"packages/{applicationName}/{releaseNumber}/{packageNumber}/{variableName}")
+            .GetStringAsync();
 
-        public async Task<Variable> GetSinglePackageConfigurationVariable(string applicationName, string releaseNumber, string packageNumber, string variableName) => await GetVariablesApiClient($"releases/{applicationName}/{releaseNumber}/{packageNumber}/{variableName}")
-            .GetJsonAsync<Variable>();
+        public async Task<bool> SetSinglePackageConfigurationVariable(string applicationName, string releaseNumber, string packageNumber, Variable variable) => (await GetVariablesApiClient($"packages/{applicationName}/{releaseNumber}/{packageNumber}/{variable?.Name}")
+            .PutJsonAsync(variable))
+            .IsSuccessStatusCode;
 
-        public async Task<bool> SetSinglePackageConfigurationVariable(string applicationName, string releaseNumber, string packageNumber, Variable variable)
-        {
-            var response = await GetVariablesApiClient($"releases/{applicationName}/{releaseNumber}/{packageNumber}/{variable?.Name}")
-                .PutJsonAsync(variable);
-
-            return response.IsSuccessStatusCode;
-        }
-
-        public async Task<bool> DeleteSinglePackageConfigurationVariable(string applicationName, string releaseNumber, string packageNumber, string variableName)
-        {
-            var response = await GetVariablesApiClient($"releases/{applicationName}/{releaseNumber}/{packageNumber}/{variableName}")
-                .DeleteAsync();
-
-            return response.IsSuccessStatusCode;
-        }
+        public async Task<bool> DeleteSinglePackageConfigurationVariable(string applicationName, string releaseNumber, string packageNumber, string variableName) => (await GetVariablesApiClient($"packages/{applicationName}/{releaseNumber}/{packageNumber}/{variableName}")
+            .DeleteAsync())
+            .IsSuccessStatusCode;
     }
 }

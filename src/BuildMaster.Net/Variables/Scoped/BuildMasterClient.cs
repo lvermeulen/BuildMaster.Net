@@ -12,16 +12,19 @@ namespace BuildMaster.Net
         public async Task<IEnumerable<ScopedVariable>> GetAllScopedConfigurationVariables() => await GetVariablesApiClient("scoped/all")
             .GetJsonAsync<IEnumerable<ScopedVariable>>();
 
-        public async Task<bool> SetAllScopedConfigurationVariables(IEnumerable<ScopedVariable> variables) => (await GetVariablesApiClient("scoped/all").PutJsonAsync(variables))
+        public async Task<bool> SetAllScopedConfigurationVariables(IEnumerable<ScopedVariable> variables) => (await GetVariablesApiClient("scoped/all")
+            .PutJsonAsync(variables))
             .IsSuccessStatusCode;
 
-        public async Task<ScopedVariable> GetSingleScopedConfigurationVariable(string variableName) => await GetVariablesApiClient($"scoped/single/{variableName}")
-            .GetJsonAsync<ScopedVariable>();
+        public async Task<string> GetSingleScopedConfigurationVariable(string variableName) => await GetVariablesApiClient($"scoped/single/{variableName}")
+            .GetStringAsync();
 
-        public async Task<bool> SetSingleScopedConfigurationVariable(ScopedVariable variable) => (await GetVariablesApiClient($"scoped/single/{variable?.Name}").PutJsonAsync(variable))
+        public async Task<bool> SetSingleScopedConfigurationVariable(ScopedVariable variable) => (await GetVariablesApiClient($"scoped/single/{variable?.Name}")
+            .PutJsonAsync(variable))
             .IsSuccessStatusCode;
 
-        public async Task<bool> DeleteSingleScopedConfigurationVariable(string variableName) => (await GetVariablesApiClient($"scoped/single/{variableName}").DeleteAsync())
+        public async Task<bool> DeleteSingleScopedConfigurationVariable(string variableName) => (await GetVariablesApiClient($"scoped/single/{variableName}")
+            .DeleteAsync())
             .IsSuccessStatusCode;
     }
 }
