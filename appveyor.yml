@@ -4,6 +4,7 @@ branches:
   - master
 pull_requests:
   do_not_increment_build_number: true
+image: Visual Studio 2017
 environment:
   COVERALLS_REPO_TOKEN:
     secure: Z4+/jxAvo+yaVszlGT/QVGGdm0+F044l8SsVsizw/uERgvoQmmzvlOkoTtD4+n0A
