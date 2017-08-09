@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using BuildMaster.Net.Common.Models;
 using Xunit;
 
 // ReSharper disable CheckNamespace
@@ -23,6 +24,15 @@ namespace BuildMaster.Net.Tests
             string result = await _client.GetSingleScopedConfigurationVariable(variableName).ConfigureAwait(false);
 
             Assert.NotNull(result);
+        }
+
+        [Theory]
+        [InlineData("SimpleServerVariable")]
+        public async Task SetSingleScopedConfigurationVariable(string variableName)
+        {
+            bool result = await _client.SetSingleScopedConfigurationVariable(new ScopedVariable { Server = "localhost", Name = variableName, Value = $"{System.DateTime.UtcNow}" }).ConfigureAwait(false);
+
+            Assert.True(result);
         }
 
         [Theory]

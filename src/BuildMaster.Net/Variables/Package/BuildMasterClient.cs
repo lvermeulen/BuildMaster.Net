@@ -20,7 +20,7 @@ namespace BuildMaster.Net
             .GetStringAsync();
 
         public async Task<bool> SetSinglePackageConfigurationVariable(string applicationName, string releaseNumber, string packageNumber, Variable variable) => (await GetVariablesApiClient($"packages/{applicationName}/{releaseNumber}/{packageNumber}/{variable?.Name}")
-            .PutJsonAsync(variable))
+            .PutStringAsync(variable?.Value))
             .IsSuccessStatusCode;
 
         public async Task<bool> DeleteSinglePackageConfigurationVariable(string applicationName, string releaseNumber, string packageNumber, string variableName) => (await GetVariablesApiClient($"packages/{applicationName}/{releaseNumber}/{packageNumber}/{variableName}")

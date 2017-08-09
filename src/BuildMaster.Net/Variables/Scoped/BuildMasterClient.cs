@@ -20,7 +20,7 @@ namespace BuildMaster.Net
             .GetStringAsync();
 
         public async Task<bool> SetSingleScopedConfigurationVariable(ScopedVariable variable) => (await GetVariablesApiClient($"scoped/single/{variable?.Name}")
-            .PutJsonAsync(variable))
+            .PutStringAsync(variable?.Value))
             .IsSuccessStatusCode;
 
         public async Task<bool> DeleteSingleScopedConfigurationVariable(string variableName) => (await GetVariablesApiClient($"scoped/single/{variableName}")

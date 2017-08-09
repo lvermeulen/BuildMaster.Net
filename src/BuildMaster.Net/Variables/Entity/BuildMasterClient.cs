@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using BuildMaster.Net.Common;
 using BuildMaster.Net.Common.Models;
 using BuildMaster.Net.Variables.Models;
 using Flurl.Http;
@@ -21,8 +22,8 @@ namespace BuildMaster.Net
         public async Task<string> GetSingleEntityConfigurationVariable(EntityTypes entityType, string entityName, string variableName) => await GetVariablesApiClient($"{entityType}/{entityName}/{variableName}")
             .GetStringAsync();
 
-        public async Task<bool> SetSingleEntityConfigurationVariable(EntityTypes entityType, string entityName, Variable variable) => (await GetVariablesApiClient($"{entityType}/{entityName}/{variable?.Name}")
-            .PutJsonAsync(variable))
+        public async Task<bool> SetSingleEntityConfigurationVariable(EntityTypes entityType, string entityName, Variable variable) => (await GetVariablesApiClient($"{EnumExtensions.GetEnumDescription(entityType)}/{entityName}/{variable?.Name}")
+            .PutStringAsync(variable?.Value))
             .IsSuccessStatusCode;
 
         public async Task<bool> DeleteSingleEntityConfigurationVariable(EntityTypes entityType, string entityName, string variableName) => (await GetVariablesApiClient($"{entityType}/{entityName}/{variableName}")

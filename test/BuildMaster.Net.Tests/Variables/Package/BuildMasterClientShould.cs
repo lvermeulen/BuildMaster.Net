@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using BuildMaster.Net.Common.Models;
 using Xunit;
 
 // ReSharper disable CheckNamespace
@@ -24,6 +25,15 @@ namespace BuildMaster.Net.Tests
             string result = await _client.GetSinglePackageConfigurationVariable(applicationName, releaseNumber, packageNumber, variableName).ConfigureAwait(false);
 
             Assert.NotNull(result);
+        }
+
+        [Theory]
+        [InlineData("TestApplication", "0.0.1", "1", "PackageVariable1")]
+        public async Task SetSinglePackageConfigurationVariable(string applicationName, string releaseNumber, string packageNumber, string variableName)
+        {
+            bool result = await _client.SetSinglePackageConfigurationVariable(applicationName, releaseNumber, packageNumber, new Variable { Name = variableName, Value = $"{System.DateTime.UtcNow}" }).ConfigureAwait(false);
+
+            Assert.True(result);
         }
 
         [Theory]

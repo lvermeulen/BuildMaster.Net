@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using BuildMaster.Net.Common.Models;
 using Xunit;
 
 // ReSharper disable CheckNamespace
@@ -23,6 +24,15 @@ namespace BuildMaster.Net.Tests
             string result = await _client.GetSingleGlobalConfigurationVariable(variableName).ConfigureAwait(false);
 
             Assert.NotNull(result);
+        }
+
+        [Theory]
+        [InlineData("TestVariable")]
+        public async Task SetSingleGlobalConfigurationVariable(string variableName)
+        {
+            bool result = await _client.SetSingleGlobalConfigurationVariable(new Variable { Name = variableName, Value = $"{System.DateTime.UtcNow}" }).ConfigureAwait(false);
+
+            Assert.True(result);
         }
 
         [Theory]

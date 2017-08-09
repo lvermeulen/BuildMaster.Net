@@ -19,8 +19,8 @@ namespace BuildMaster.Net
         public async Task<string> GetSingleReleaseConfigurationVariable(string applicationName, string releaseNumber, string variableName) => await GetVariablesApiClient($"releases/{applicationName}/{releaseNumber}/{variableName}")
             .GetStringAsync();
 
-        public async Task<bool> SetSingleReleaseConfigurationVariable(string applicationName, string releaseNumber, Variable variable) => (await GetVariablesApiClient($"releases/{applicationName}/{releaseNumber}/{variable.Name}")
-            .PutJsonAsync(new { variable }))
+        public async Task<bool> SetSingleReleaseConfigurationVariable(string applicationName, string releaseNumber, Variable variable) => (await GetVariablesApiClient($"releases/{applicationName}/{releaseNumber}/{variable?.Name}")
+            .PutStringAsync(variable?.Value))
             .IsSuccessStatusCode;
 
         public async Task<bool> DeleteSingleReleaseConfigurationVariable(string applicationName, string releaseNumber, string variableName) => (await GetVariablesApiClient($"releases/{applicationName}/{releaseNumber}/{variableName}")

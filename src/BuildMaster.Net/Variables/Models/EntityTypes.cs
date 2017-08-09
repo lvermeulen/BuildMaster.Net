@@ -1,16 +1,24 @@
-﻿// ReSharper disable InconsistentNaming
+﻿using System.ComponentModel;
 
-using Newtonsoft.Json;
+// ReSharper disable InconsistentNaming
 
 namespace BuildMaster.Net.Variables.Models
 {
     public enum EntityTypes
     {
-        server,
-        role,
-        application,
-        [JsonProperty("application-group")]
-        applicationgroup,
-        environment
+        [Description("server")]
+        Server,
+
+        [Description("role")]
+        Role,
+
+        [Description("application")]
+        Application,
+
+        [Description("application-group")]
+        ApplicationGroup,
+
+        [Description("environment")]
+        Environment
     }
 }
