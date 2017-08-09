@@ -41,8 +41,8 @@ namespace BuildMaster.Net
                 new NamedValue(nameof(request.ReleaseName).Decapitalize(), request.ReleaseName),
                 new NamedValue(nameof(request.ReleaseNumber).Decapitalize(), request.ReleaseNumber),
                 new NamedValue(nameof(request.PipelineId).Decapitalize(), request.PipelineId),
-                new NamedValue(nameof(request.PipelineName).Decapitalize(), request.PipelineName),
-                new NamedValue(nameof(request.Variables).Decapitalize(), request.Variables)
+                new NamedValue(nameof(request.PipelineName).Decapitalize(), request.PipelineName)//,
+                //new NamedValue(nameof(request.Variables).Decapitalize(), request.Variables)
             );
 
             return await GetReleasesApiClient("create", queryParamValues)
