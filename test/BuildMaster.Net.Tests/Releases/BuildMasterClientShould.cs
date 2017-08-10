@@ -17,6 +17,24 @@ namespace BuildMaster.Net.Tests
         }
 
         [Fact]
+        public async Task CreateReleaseAsync()
+        {
+            var result = await _client.CreateReleaseAsync(new CreateReleaseRequest
+            {
+                ApplicationName = "TestApplication",
+                PipelineName = "TestApplication",
+                ReleaseNumber = "0.0.5",
+                Variables = new Net.Common.Models.Variables
+                {
+                    new Net.Common.Models.Variable { Name = "$ReleaseVariable5_1", Value = "ReleaseVariable5_1Value" },
+                    new Net.Common.Models.Variable { Name = "$ReleaseVariable5_2", Value = "ReleaseVariable5_2Value" }
+                }
+            });
+
+            Assert.NotNull(result);
+        }
+
+        [Fact]
         public async Task GetPackagesAsync()
         {
             var results = await _client.GetPackagesAsync(new GetPackagesRequest()).ConfigureAwait(false);

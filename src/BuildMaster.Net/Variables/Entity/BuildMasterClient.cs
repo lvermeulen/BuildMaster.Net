@@ -11,7 +11,6 @@ namespace BuildMaster.Net
 {
     public partial class BuildMasterClient
     {
-        //TODO: verify API
         public async Task<Common.Models.Variables> GetAllEntityConfigurationVariables(EntityTypes entityType, string entityName) => await GetVariablesApiClient($"{entityType}/{entityName}")
             .GetJsonAsync<Common.Models.Variables>();
 

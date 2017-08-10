@@ -41,9 +41,13 @@ namespace BuildMaster.Net
                 new NamedValue(nameof(request.ReleaseName).Decapitalize(), request.ReleaseName),
                 new NamedValue(nameof(request.ReleaseNumber).Decapitalize(), request.ReleaseNumber),
                 new NamedValue(nameof(request.PipelineId).Decapitalize(), request.PipelineId),
-                new NamedValue(nameof(request.PipelineName).Decapitalize(), request.PipelineName)//,
-                //new NamedValue(nameof(request.Variables).Decapitalize(), request.Variables)
+                new NamedValue(nameof(request.PipelineName).Decapitalize(), request.PipelineName)
             );
+
+            foreach (var variable in request.Variables)
+            {
+                queryParamValues.Add(variable.Name, variable.Value);
+            }
 
             return await GetReleasesApiClient("create", queryParamValues)
                 .PutAsync(new StringContent(""))
@@ -58,8 +62,12 @@ namespace BuildMaster.Net
                 new NamedValue(nameof(request.ReleaseName).Decapitalize(), request.ReleaseName),
                 new NamedValue(nameof(request.ReleaseNumber).Decapitalize(), request.ReleaseNumber),
                 new NamedValue(nameof(request.Template).Decapitalize(), request.Template)
-                //TODO: Variables
             );
+
+            foreach (var variable in request.Variables)
+            {
+                queryParamValues.Add(variable.Name, variable.Value);
+            }
 
             return await GetReleasesApiClient("create-from-template", queryParamValues)
                 .PutAsync(new StringContent(""))
@@ -94,8 +102,12 @@ namespace BuildMaster.Net
                 new NamedValue(nameof(request.ApplicationId).Decapitalize(), request.ApplicationId),
                 new NamedValue(nameof(request.ApplicationName).Decapitalize(), request.ApplicationName),
                 new NamedValue(nameof(request.PackageNumber).Decapitalize(), request.PackageNumber)
-                //TODO: Variables
             );
+
+            foreach (var variable in request.Variables)
+            {
+                queryParamValues.Add(variable.Name, variable.Value);
+            }
 
             return await GetReleasesApiClient("packages/create", queryParamValues)
                 .PutAsync(new StringContent(""))
@@ -132,8 +144,12 @@ namespace BuildMaster.Net
                 new NamedValue(nameof(request.ApplicationName).Decapitalize(), request.ApplicationName),
                 new NamedValue(nameof(request.ToStage).Decapitalize(), request.ToStage),
                 new NamedValue(nameof(request.Force).Decapitalize(), request.Force.ToTrueFalse())
-                //TODO: Variables
             );
+
+            foreach (var variable in request.Variables)
+            {
+                queryParamValues.Add(variable.Name, variable.Value);
+            }
 
             return await GetReleasesApiClient("packages/deploy", queryParamValues)
                 .PutAsync(new StringContent(""))

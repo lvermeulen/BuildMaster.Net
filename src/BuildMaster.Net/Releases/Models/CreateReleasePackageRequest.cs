@@ -7,7 +7,6 @@
         public int? ApplicationId { get; set; }
         public string ApplicationName { get; set; }
         public string PackageNumber { get; set; }
-
-        //TODO: Variables Optional. Any number of parameters with a key name consisting of a valid variable name prefixed with $, and with any value.
+        public Common.Models.Variables Variables { get; set; }
     }
 }
