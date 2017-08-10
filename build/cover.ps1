@@ -21,8 +21,8 @@ if (-not (test-path $tempPath) ) {
 }
 
 # run opencover
-Get-ChildItem -Path $PSScriptRoot\..\test -Filter project.json -Recurse | ForEach-Object {
-    $path = "$tempPath\$($_.Directory.BaseName)"
+Get-ChildItem -Path $PSScriptRoot\..\test -Filter *.Tests -Recurse | ForEach-Object {
+    $path = "$tempPath\$($_)"
     if (-not (test-path $path) ) {
         mkdir $path | Out-Null
     }
