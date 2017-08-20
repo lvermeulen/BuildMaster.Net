@@ -246,13 +246,13 @@ namespace BuildMaster.Net
         /// <summary>
         /// Gets the details of the specified plan, and all the actions associated with the plan
         /// </summary>
-        public async Task<DeploymentPlanActionGroupsExtendedActionGroupActionsExtendedActionGroupUsageSlimApplicationDeploymentPlans> Plans_GetDeploymentPlanActionGroupAsync(int deploymentPlanActionGroup_Id)
+        public async Task<DeploymentPlanActionGroupOutput> Plans_GetDeploymentPlanActionGroupAsync(int deploymentPlanActionGroup_Id)
         {
             var queryParamValues = QueryParamValues.From(
                 new NamedValue(nameof(deploymentPlanActionGroup_Id).Capitalize(), deploymentPlanActionGroup_Id)
             );
 
-            return await ExecuteNativeApiMethodAsync<DeploymentPlanActionGroupsExtendedActionGroupActionsExtendedActionGroupUsageSlimApplicationDeploymentPlans>(nameof(Plans_GetDeploymentPlanActionGroupAsync).WithoutAsyncSuffix(), queryParamValues).ConfigureAwait(false);
+            return await ExecuteNativeApiMethodAsync<DeploymentPlanActionGroupOutput>(nameof(Plans_GetDeploymentPlanActionGroupAsync).WithoutAsyncSuffix(), queryParamValues).ConfigureAwait(false);
         }
 
         /// <summary>

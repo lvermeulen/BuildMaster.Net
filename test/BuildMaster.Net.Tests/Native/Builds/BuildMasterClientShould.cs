@@ -16,7 +16,7 @@ namespace BuildMaster.Net.Tests
         }
 
         [Theory]
-        [InlineData(5)]
+        [InlineData(3)]
         public async Task Builds_GetExecutionExtendedAsync(int executionId)
         {
             var result = await _client.Builds_GetExecutionExtendedAsync(executionId).ConfigureAwait(false);
