@@ -57,14 +57,11 @@ namespace BuildMaster.Net.Common
 
                     foreach (var valueProperty in valueObject.Children<JProperty>())
                     {
-                        string value;
-                        string sensitive;
-
-                        if (TryGetJPropertyNameValue(valueProperty, "value", out value))
+                        if (TryGetJPropertyNameValue(valueProperty, "value", out string value))
                         {
                             result.Value = value;
                         }
-                        else if (TryGetJPropertyNameValue(valueProperty, "sensitive", out sensitive))
+                        else if (TryGetJPropertyNameValue(valueProperty, "sensitive", out string sensitive))
                         {
                             result.Sensitive = sensitive.ToBool();
                         }
