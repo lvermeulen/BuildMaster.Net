@@ -7,14 +7,14 @@ namespace BuildMaster.Net.Tests
 {
     public partial class BuildMasterClientShould
     {
-        [Fact]
-        public async Task BuildOutputs_GetOutputsAsync()
+        [Theory]
+        [InlineData(3)]
+        public async Task BuildOutputs_GetOutputsAsync(int executionId)
         {
-            var results = await _client.BuildOutputs_GetOutputsAsync(1).ConfigureAwait(false);
+            var results = await _client.BuildOutputs_GetOutputsAsync(executionId).ConfigureAwait(false);
 
             Assert.NotNull(results);
             Assert.NotEmpty(results);
         }
-
     }
 }
