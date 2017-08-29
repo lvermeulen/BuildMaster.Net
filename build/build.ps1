@@ -17,7 +17,7 @@ foreach ($src in ls $PSScriptRoot\..\src/*) {
         $version = "1.0.0-$BuildVersionNumber"
     }
 
-    & dotnet build -c Release --version=$BuildVersionNumber
+    & dotnet build -c Release --version $version
     & dotnet pack -c Release --include-symbols -o ..\..\artifacts --no-build
     if($LASTEXITCODE -ne 0) { exit 1 }    
 
