@@ -17,8 +17,8 @@ foreach ($src in ls $PSScriptRoot\..\src/*) {
         $version = "1.0.0-$BuildVersionNumber"
     }
 
-    & dotnet build -c Release --version $version
-    & dotnet pack -c Release --include-symbols -o ..\..\artifacts --no-build
+    & dotnet build -c Release
+    & dotnet pack -c Release --include-symbols -o ..\..\artifacts --no-build /p:PackageVersion=$version
     if($LASTEXITCODE -ne 0) { exit 1 }    
 
     Pop-Location
