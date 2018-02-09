@@ -15,9 +15,9 @@ namespace BuildMaster.Net.Native.Models
         public string Script_Text { get; set; }
         public bool Active_Indicator { get; set; }
         public string CreatedBy_User_Name { get; set; }
-        public DateTime CreatedOn_Date { get; set; }
+        public DateTime? CreatedOn_Date { get; set; }
         public string ModifiedBy_User_Name { get; set; }
-        public DateTime ModifiedOn_Date { get; set; }
+        public DateTime? ModifiedOn_Date { get; set; }
         public string Application_Name { get; set; }
         public long Numeric_Release_Number { get; set; }
         public string Deployable_Name { get; set; }

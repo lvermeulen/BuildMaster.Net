@@ -16,7 +16,7 @@ namespace BuildMaster.Net.Native.Models
         public int? Server_Id { get; set; }
         public string DeployedTo_Path { get; set; }
         public string DeployedBy_User_Name { get; set; }
-        public DateTime DeployedOn_Date { get; set; }
+        public DateTime? DeployedOn_Date { get; set; }
         public int? Environment_Id { get; set; }
         public string Environment_Name { get; set; }
         public int? Deployable_Id { get; set; }

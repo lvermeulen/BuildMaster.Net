@@ -8,9 +8,9 @@ namespace BuildMaster.Net.Native.Models
     {
         public int ActionGroup_Id { get; set; }
         public string CreatedBy_User_Name { get; set; }
-        public DateTime CreatedOn_Date { get; set; }
+        public DateTime? CreatedOn_Date { get; set; }
         public string ModifiedBy_User_Name { get; set; }
-        public DateTime ModifiedOn_Date { get; set; }
+        public DateTime? ModifiedOn_Date { get; set; }
         public string ActionGroup_Name { get; set; }
         public string Predicate_Configuration { get; set; }
         public string ActionGroup_Description { get; set; }

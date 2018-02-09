@@ -14,7 +14,7 @@ foreach ($src in ls $PSScriptRoot\..\src/*) {
         $version = $TagVersionNumber
     }
     else {
-        $version = "1.0.0-$BuildVersionNumber"
+        $version = $BuildVersionNumber
     }
 
     & dotnet build -c Release

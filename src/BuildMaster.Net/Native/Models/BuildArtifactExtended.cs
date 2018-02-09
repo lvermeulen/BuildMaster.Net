@@ -16,7 +16,7 @@ namespace BuildMaster.Net.Native.Models
         public string Deployable_Name { get; set; }
         public string Artifact_Name { get; set; }
         public int? Execution_Id { get; set; }
-        public DateTime Created_Date { get; set; }
+        public DateTime? Created_Date { get; set; }
         public string Artifact_Path { get; set; }
     }
 }

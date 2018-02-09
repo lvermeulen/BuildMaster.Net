@@ -14,9 +14,9 @@ namespace BuildMaster.Net.Native.Models
         public int Application_Id { get; set; }
         public bool Active_Indicator { get; set; }
         public string CreatedBy_User_Name { get; set; }
-        public DateTime CreatedOn_Date { get; set; }
+        public DateTime? CreatedOn_Date { get; set; }
         public string ModifiedBy_User_Name { get; set; }
-        public DateTime ModifiedOn_Date { get; set; }
+        public DateTime? ModifiedOn_Date { get; set; }
         public string Deployable_Name { get; set; }
         public int? LatestDeployment_ConfigurationFileDeployment_Id { get; set; }
         public int? LatestDeployment_Execution_Id { get; set; }

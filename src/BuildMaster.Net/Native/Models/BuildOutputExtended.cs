@@ -20,7 +20,7 @@ namespace BuildMaster.Net.Native.Models
         public string PipelineStage_Name { get; set; }
         public int? Environment_Id { get; set; }
         public string Environment_Name { get; set; }
-        public DateTime ExecutionStart_Date { get; set; }
+        public DateTime? ExecutionStart_Date { get; set; }
         public string ExecutionStatus_Name { get; set; }
     }
 }

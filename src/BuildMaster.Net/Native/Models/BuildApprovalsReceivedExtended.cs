@@ -17,7 +17,7 @@ namespace BuildMaster.Net.Native.Models
         public int Original_Requirement_Id { get; set; }
         public string User_Name { get; set; }
         public string Comments_Text { get; set; }
-        public DateTime Received_Date { get; set; }
+        public DateTime? Received_Date { get; set; }
         public string RequirementType_Code { get; set; }
         public string Requirement_Description { get; set; }
         public int? Pipeline_Id { get; set; }

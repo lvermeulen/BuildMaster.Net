@@ -21,7 +21,7 @@ namespace BuildMaster.Net.Native.Models
         public int Environment_Id { get; set; }
         public string Environment_Name { get; set; }
         public int Execution_Id { get; set; }
-        public DateTime ExecutionStart_Date { get; set; }
+        public DateTime? ExecutionStart_Date { get; set; }
         public string ExecutionStatus_Code { get; set; }
         public string ExecutionRunState_Code { get; set; }
     }

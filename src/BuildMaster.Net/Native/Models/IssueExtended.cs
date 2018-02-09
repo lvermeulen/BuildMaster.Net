@@ -25,7 +25,7 @@ namespace BuildMaster.Net.Native.Models
         public string ClosedOn_Original_Build_Number { get; set; }
         public int? ClosedOn_Original_Build_Sequence { get; set; }
         public string CreatedBy_User_Name { get; set; }
-        public DateTime CreatedOn_Date { get; set; }
+        public DateTime? CreatedOn_Date { get; set; }
         public string IssueTracker_IssueId_Text { get; set; }
         public string IssueTracker_IssueStatus_Text { get; set; }
         public DateTime? IssueTracker_LastSync_Date { get; set; }

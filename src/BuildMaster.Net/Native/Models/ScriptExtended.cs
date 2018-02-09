@@ -13,9 +13,9 @@ namespace BuildMaster.Net.Native.Models
         public bool AutoSync_Indicator { get; set; }
         public string ScriptType_Code { get; set; }
         public string CreatedBy_User_Name { get; set; }
-        public DateTime CreatedOn_Date { get; set; }
+        public DateTime? CreatedOn_Date { get; set; }
         public string ModifiedBy_User_Name { get; set; }
-        public DateTime ModifiedOn_Date { get; set; }
+        public DateTime? ModifiedOn_Date { get; set; }
         public int? LatestVersion_Number { get; set; }
         public byte[] LatestVersion_Bytes { get; set; }
     }

@@ -9,7 +9,7 @@ namespace BuildMaster.Net.Native.Models
         public int ChangeControl_Id { get; set; }
         public int Environment_Id { get; set; }
         public string PerformedBy_User_Name { get; set; }
-        public DateTime Performed_Date { get; set; }
+        public DateTime? Performed_Date { get; set; }
         public string Notes_Text { get; set; }
         public string Environment_Name { get; set; }
         public int Application_Id { get; set; }
@@ -22,8 +22,8 @@ namespace BuildMaster.Net.Native.Models
         public string PrincipalType_Code { get; set; }
         public string CreatedBy_User_Name { get; set; }
         public string ModifiedBy_User_Name { get; set; }
-        public DateTime CreatedOn_Date { get; set; }
-        public DateTime ModifiedOn_Date { get; set; }
+        public DateTime? CreatedOn_Date { get; set; }
+        public DateTime? ModifiedOn_Date { get; set; }
         public string PerformanceType_Code { get; set; }
         public bool Active_Indicator { get; set; }
         public string Release_Name { get; set; }

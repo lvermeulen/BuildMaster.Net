@@ -6,7 +6,7 @@ namespace BuildMaster.Net.Native.Models
 {
     public class BuildExecutionActionGroupAction
     {
-        public DateTime ExecutionStarted_Date { get; set; }
+        public DateTime?  ExecutionStarted_Date { get; set; }
         public DateTime? ExecutionEnded_Date { get; set; }
         public string ExecutionStatus_Name { get; set; }
         public string ExecutionAction_Description { get; set; }

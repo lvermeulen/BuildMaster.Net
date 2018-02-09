@@ -9,7 +9,7 @@ namespace BuildMaster.Net.Native.Models
         public int RetentionPolicy_Id { get; set; }
         public string RetentionPolicy_Name { get; set; }
         public string PurgeType_Code { get; set; }
-        public DateTime CreatedOn_Date { get; set; }
+        public DateTime? CreatedOn_Date { get; set; }
         public string CreatedBy_User_Name { get; set; }
         public DateTime? ModifiedOn_Date { get; set; }
         public string ModifiedBy_User_Name { get; set; }

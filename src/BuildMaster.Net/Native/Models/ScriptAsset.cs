@@ -11,6 +11,6 @@ namespace BuildMaster.Net.Native.Models
         public int? Application_Id { get; set; }
         public byte[] Script_Text { get; set; }
         public string ModifiedBy_User_Name { get; set; }
-        public DateTime ModifiedOn_Date { get; set; }
+        public DateTime? ModifiedOn_Date { get; set; }
     }
 }
